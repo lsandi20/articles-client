@@ -1,8 +1,6 @@
-import Layout from '../components/layout'
 import Articles from '../components/articles'
 import Image from 'next/image'
 export default function Home() {
-
   return (
     <div className="container py-5 mb-5">
       <div className="row py-5">
