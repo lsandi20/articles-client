@@ -1,8 +1,7 @@
-import Layout from '../../components/layout'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import ReactQuill from 'react-quill'
+const ReactQuill = typeof window === 'object' ? require('react-quill'): () => false
 import 'react-quill/dist/quill.bubble.css'
 
 export default function ArticleDetail() {

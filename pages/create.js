@@ -1,5 +1,4 @@
-import Layout from '../components/layout'
-import ReactQuill from 'react-quill'
+const ReactQuill = typeof window === 'object' ? require('react-quill'): () => false
 import 'react-quill/dist/quill.snow.css'
 import Router from 'next/router'
 import { useEffect, useState, useRef, useContext } from 'react'
