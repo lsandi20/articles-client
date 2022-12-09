@@ -17,10 +17,3 @@ export default function Article() {
   )
 }
 
-Article.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
-  )
-}

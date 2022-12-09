@@ -21,11 +21,3 @@ export default function Home() {
     </div>
   )
 }
-
-Home.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
-  )
-}

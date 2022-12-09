@@ -2,18 +2,29 @@ import Layout from '../components/layout'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import Router from 'next/router'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
+import { AuthContext } from '../components/auth'
 
 export default function CreateArticle() {
+    const [state] = useContext(AuthContext)
+    if (!state.token) {
+        Router.push('/')
+        return;
+    }
     const [description, setDescription] = useState('')
     const form = useRef(null)
 
     const submitForm = (event) => {
         event.preventDefault()
         let formData = new FormData(form.current)
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/article/create`, {method: 'POST', body: formData})
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/article/create`, {method: 'POST', body: formData, headers: {
+            'Authorization': `Bearer ${state.token}`
+        }})
         .then((res) => res.json())
         .then((data)=> {
+            Router.push('/article')
+        }).catch((error)=>{
+            console.error(error)
             Router.push('/article')
         })
     }
@@ -31,6 +42,8 @@ export default function CreateArticle() {
                 )})
             }
             setCategories(categories)
+        }).catch((error)=>{
+            console.error(error)
         })
     }, [])
    const modules = {
@@ -88,13 +101,5 @@ export default function CreateArticle() {
             </form>
             </div>
         </div>
-    )
-}
-
-CreateArticle.getLayout = function getLayout(page) {
-    return (
-        <Layout>
-            {page}
-        </Layout>
     )
 }

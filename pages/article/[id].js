@@ -46,6 +46,8 @@ export default function ArticleDetail() {
             }
             setArticles(article)
             setLoading(false)
+        }).catch((error)=>{
+            console.error(error)
         })
     }, [])
 
@@ -54,12 +56,4 @@ export default function ArticleDetail() {
     return article
        
     
-}
-
-ArticleDetail.getLayout = function getLayout(page) {
-    return (
-        <Layout>
-            {page}
-        </Layout>
-    )
 }

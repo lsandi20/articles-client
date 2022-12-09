@@ -33,7 +33,9 @@ export default function Articles() {
             }
             setArticles(articles)
             setLoading(false)
-        })
+        }).catch((error)=>{
+          console.error(error)
+      })
     }, [])
 
     if(isLoading) return <p>Loading Articles..</p>
