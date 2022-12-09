@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 export default function Articles() {
     let [articles, setArticles] = useState(null)
-    let [page, setPage] = useState(1)
+    let [page, setPage] = useState(0)
     const [isLoading, setLoading] = useState(false)
     let articlesData = null
 
@@ -35,17 +35,19 @@ export default function Articles() {
             }
             setArticles(articles)
             setLoading(false)
-            setPage(data.page)
+            setPage(data.page+1)
         }).catch((error)=>{
           console.error(error)
       })
+    }, [])
+    
+    useEffect(()=>{
       window.onscroll = (()=>{
-        if (document.body.scrollHeight - (window.innerHeight + window.scrollY )< 10) {
-          setPage(page+1)
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/article?page=${page+1}`)
+        if (document.body.scrollHeight - (window.innerHeight + window.scrollY )< 20) {
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/article?page=${page}`)
           .then((res) => res.json())
           .then((data)=> {
-              if (data.data) {
+              if (data.data.length > 0) {
                 let visibleArticles = data.data.filter((article)=>{
                   return article.is_visible
                 })
@@ -63,16 +65,16 @@ export default function Articles() {
                         </Link>
                       </div>)
                   })
-              }
-              setArticles(articles.concat(articlesData))
+                  setArticles(articles.concat(articlesData))
               setLoading(false)
+              setPage(page+1)
+              }
           }).catch((error)=>{
             console.error(error)
         })
         }
       })
-    }, [])
-    
+    }, [page])
       
     
     if(isLoading) return <p>Loading Articles..</p>
