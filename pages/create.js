@@ -1,15 +1,17 @@
 const ReactQuill = typeof window === 'object' ? require('react-quill'): () => false
 import 'react-quill/dist/quill.snow.css'
-import Router from 'next/router'
+import router from 'next/router'
 import { useEffect, useState, useRef, useContext } from 'react'
 import { AuthContext } from '../components/auth'
 
 export default function CreateArticle() {
     const [state] = useContext(AuthContext)
-    if (!state.token) {
-        Router.push('/')
-        return;
-    }
+    useEffect(()=>{
+        if (!state.token) {
+            router.push('/')
+            return;
+        }
+    })
     const [description, setDescription] = useState('')
     const form = useRef(null)
 
@@ -21,10 +23,10 @@ export default function CreateArticle() {
         }})
         .then((res) => res.json())
         .then((data)=> {
-            Router.push('/article')
+            router.push('/article')
         }).catch((error)=>{
             console.error(error)
-            Router.push('/article')
+            router.push('/article')
         })
     }
 
@@ -59,8 +61,8 @@ export default function CreateArticle() {
 
     return (
         <div className="container py-5 mb-5" style={{ maxWidth: 954 }}>
-            <div className="row g-5 mb-4">
                         <form ref={form} onSubmit={submitForm}>
+            <div className="row g-5 mb-4">
                 <div className="col-md-8">
                     <h4 className="h4 fw-bold mb-4">Create Article</h4>
                     <div>
@@ -97,8 +99,8 @@ export default function CreateArticle() {
                             <button className="btn btn-danger mt-3">Publish</button>
                     </div>
                 </div>
-            </form>
             </div>
+            </form>
         </div>
     )
 }

@@ -1,5 +1,5 @@
-import Layout from '../components/layout'
-import Articles from '../components/articles'
+import Layout from '../../components/layout'
+import Articles from '../../components/articles'
 
 export default function Article() {
    
