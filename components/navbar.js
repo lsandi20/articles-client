@@ -6,7 +6,7 @@ export default function Navbar() {
         <>
             <nav className="navbar navbar-expand-lg bg-white px-5 shadow-sm">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><Image src="/logo.png" alt="Sahaware Logo" width={248.87} height={24} /></a>
+                    <a className="navbar-brand" href="/"><Image src="/logo.png" alt="Sahaware Logo" width={248.87} height={24} /></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -27,7 +27,7 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            <div className="modal fade" id="authModal" aria-hidden="true" aria-labelledby="authModalLabel" tabindex="-1">
+            <div className="modal fade" id="authModal" aria-hidden="true" aria-labelledby="authModalLabel" tabIndex="-1">
                 <div className="modal-dialog modal-dialog">
                     <div className="modal-content">
                         <div className="modal-body">
@@ -36,11 +36,11 @@ export default function Navbar() {
                                 <div className="my-3">Don't have an account? <a className="text-decoration-none text-danger" data-bs-target="#authModal2" data-bs-toggle="modal" role="button">Create Account</a></div>
                                 <form>
                                     <div className="mb-3">
-                                        <label for="loginInputEmail" className="form-label">Email</label>
+                                        <label htmlFor="loginInputEmail" className="form-label">Email</label>
                                         <input type="email" className="form-control" id="loginInputEmail" aria-describedby="emailHelp" placeholder="Entry your email"></input>
                                     </div>
                                     <div className="mb-3">
-                                        <label for="loginInputPassword1" className="form-label">Password</label>
+                                        <label htmlFor="loginInputPassword1" className="form-label">Password</label>
                                         <input type="password" className="form-control" id="loginInputPassword1" placeholder="Entry your password"></input>
                                     </div>
                                     <button type="submit" className="btn btn-danger mt-3">Log in</button>
@@ -50,7 +50,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-            <div className="modal fade" id="authModal2" aria-hidden="true" aria-labelledby="authModalLabel2" tabindex="-1">
+            <div className="modal fade" id="authModal2" aria-hidden="true" aria-labelledby="authModalLabel2" tabIndex="-1">
                 <div className="modal-dialog modal-dialog">
                     <div className="modal-content">
                         <div className="modal-body">
@@ -59,15 +59,15 @@ export default function Navbar() {
                                 <div className="my-3">Have an account? <a className="text-decoration-none text-danger" data-bs-target="#authModal" data-bs-toggle="modal" role="button">Login</a></div>
                                 <form>
                                     <div className="mb-3">
-                                        <label for="registerInputName" className="form-label">Fullname</label>
-                                        <input type="text" className="form-control" id="registerInputEmail" placeholder="Entry your fullname"></input>
+                                        <label htmlFor="registerInputName" className="form-label">Fullname</label>
+                                        <input type="text" className="form-control" id="registerInputName" placeholder="Entry your fullname"></input>
                                     </div>
                                     <div className="mb-3">
-                                        <label for="registerInputEmail" className="form-label">Email</label>
+                                        <label htmlFor="registerInputEmail" className="form-label">Email</label>
                                         <input type="email" className="form-control" id="registerInputEmail" aria-describedby="emailHelp" placeholder="Entry your email"></input>
                                     </div>
                                     <div className="mb-3">
-                                        <label for="registerInputPassword1" className="form-label">Password</label>
+                                        <label htmlFor="registerInputPassword1" className="form-label">Password</label>
                                         <input type="password" className="form-control" id="registerInputPassword1" placeholder="Entry your password"></input>
                                     </div>
                                     <button type="submit" className="btn btn-danger mt-3">Create account</button>

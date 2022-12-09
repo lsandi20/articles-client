@@ -1,0 +1,6 @@
+.nav-link:focus, .nav-link:hover {
+    color: #ED3237;
+}
+.ql-editor {
+    min-height: 1000px;
+}
